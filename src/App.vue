@@ -1,4 +1,15 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import ActionsList from './components/ActionsList.vue'
+import PostItem from './components/PostItem.vue'
+import type { Action } from './stores/types/action'
+import type { Post } from './stores/types/post'
+
+const posts: Post[] = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }]
+const actions: Action[] = [
+  { id: 1, postId: 1, indexFrom: 0, indexTo: 1 },
+  { id: 2, postId: 2, indexFrom: 1, indexTo: 0 }
+]
+</script>
 
 <template>
   <main class="min-h-screen">
@@ -7,10 +18,20 @@
         <div class="w-full">
           <h1 class="block text-3xl font-semibold text-white">Sortable Posts List</h1>
 
-          <div class="list mt-6"></div>
+          <div class="list mt-6">
+            <PostItem
+              v-for="(post, index) in posts"
+              :post="post"
+              :first="index === 0"
+              :last="index === posts.length - 1"
+              :key="post.id"
+            />
+          </div>
         </div>
 
-        <div class="w-full">hey</div>
+        <div class="w-full">
+          <ActionsList :actions="actions" />
+        </div>
       </div>
     </div>
   </main>
