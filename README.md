@@ -1,45 +1,25 @@
-# sortable-posts
+# Sortable Posts
 
-This template should help get you started developing with Vue 3 in Vite.
+Coding test for client, using Vue 3
 
-## Recommended IDE Setup
+## Scripts
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+```bash
+# install dependencies
+npm i
 
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
+# run development server
 npm run dev
-```
 
-### Type-Check, Compile and Minify for Production
+# open cypress for integration testing
+npm run cy:open
 
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
+# run vitest for unit testing
 npm run test:unit
-```
 
-### Lint with [ESLint](https://eslint.org/)
+# compile for production
+npm run build
 
-```sh
+# run eslint
 npm run lint
 ```
