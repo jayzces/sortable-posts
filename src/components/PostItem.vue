@@ -10,7 +10,7 @@ defineProps<{
 
 <template>
   <div
-    class="post px-4 py-2 min-h-[88px] md:min-h-[112px] bg-white shadow-md rounded text-xl transition-transform mt-6 duration-300 flex justify-between items-center ease-in-out"
+    class="post px-4 py-2 min-h-[88px] md:min-h-[112px] bg-white shadow-md rounded text-xl transition-transform duration-300 flex justify-between items-center ease-in-out"
     :class="{ 'scale-105': latest }"
   >
     Post {{ post.id }}

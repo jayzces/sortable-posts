@@ -24,7 +24,7 @@ defineProps<{ actions: Action[] }>()
         </button>
       </div>
 
-      <p v-if="actions.length === 0">No actions yet</p>
+      <p v-if="actions.length === 0" class="text-lg">No actions yet</p>
     </div>
   </div>
 </template>

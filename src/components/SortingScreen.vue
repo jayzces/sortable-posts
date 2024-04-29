@@ -3,24 +3,29 @@ import type { Action } from '@/stores/types/action'
 import type { Post } from '@/stores/types/post'
 import ActionsList from './ActionsList.vue'
 import PostItem from './PostItem.vue'
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 
 const actions = ref<Action[]>([])
-const posts = ref<Post[]>([{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }])
+const posts = ref<Post[]>([])
+
+// fetch data
+fetch('https://jsonplaceholder.typicode.com/posts')
+  .then((response) => response.json())
+  .then((data: Post[]) => (posts.value = data.slice(0, 5)))
 
 const movePost = (postId: number, movement: 'up' | 'down', generateActions = true) => {
   const index = posts.value.findIndex((p) => p.id === postId)
   const left = posts.value.slice(0, index)
   const right = posts.value.slice(index + 1)
 
-  if (movement === 'down') {
+  if (movement === 'down' && index < posts.value.length - 1) {
     posts.value = [...left, right[0], posts.value[index], ...right.slice(1)].filter((p) => !!p)
     if (generateActions)
       actions.value = [
-        { id: actions.value.length + 1, postId, indexFrom: index, indexTo: index + 1 },
+        reactive({ id: actions.value.length + 1, postId, indexFrom: index, indexTo: index + 1 }),
         ...actions.value
       ]
-  } else if (movement === 'up') {
+  } else if (movement === 'up' && index > 0) {
     posts.value = [
       ...left.slice(0, left.length - 1),
       posts.value[index],
@@ -30,7 +35,7 @@ const movePost = (postId: number, movement: 'up' | 'down', generateActions = tru
 
     if (generateActions)
       actions.value = [
-        { id: actions.value.length + 1, postId, indexFrom: index, indexTo: index - 1 },
+        reactive({ id: actions.value.length + 1, postId, indexFrom: index, indexTo: index - 1 }),
         ...actions.value
       ]
   }
@@ -50,11 +55,11 @@ const timeTravel = (actionIndex: number) => {
 
 <template>
   <div class="container py-10">
-    <div class="grid max-sm:auto-rows-auto sm:grid-cols-2 gap-10">
+    <div class="grid max-sm:auto-rows-auto sm:grid-cols-2 gap-6 sm:gap-10">
       <div class="w-full">
         <h1 class="block text-3xl font-semibold text-white">Sortable Posts List</h1>
 
-        <div class="list mt-6">
+        <div class="list flex flex-col gap-6 mt-6">
           <PostItem
             v-for="(post, index) in posts"
             :post="post"
