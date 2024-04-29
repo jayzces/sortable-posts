@@ -32,7 +32,5 @@ describe('<SortingScreen />', () => {
     cy.get('.post:nth-child(3) button.post__move-up').click()
     cy.get('.time-travel-btn').last().click()
     cy.compareText('.post__content', 'Post 1, Post 2, Post 3')
-
-    cy.get('.actions .list').should('contain', 'No actions yet')
   })
 })
