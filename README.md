@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/83856006-8af4-4bfa-ab63-383b7ee64bc2/deploy-status)](https://app.netlify.com/sites/cool-faloodeh-2520b5/deploys)
+
 # Sortable Posts
 
 Coding test for client, using Vue 3
