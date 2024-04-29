@@ -2,6 +2,8 @@
 
 Coding test for client, using Vue 3
 
+![Preview](./preview.png)
+
 ## Scripts
 
 ```bash
