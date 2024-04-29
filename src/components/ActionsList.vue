@@ -6,7 +6,7 @@ defineProps<{ actions: Action[] }>()
 <template>
   <div class="actions bg-white rounded shadow-md">
     <h2 class="text-xl md:text-2xl font-semibold px-4 py-6">List of actions committed</h2>
-    <div class="bg-zinc-100 p-4">
+    <div class="bg-zinc-100 p-4 list">
       <div
         class="action bg-white p-4 shadow-md flex justify-between items-center first:rounded-t last:rounded-b max-sm:flex-wrap gap-2"
         v-for="(action, index) in actions"
@@ -17,7 +17,7 @@ defineProps<{ actions: Action[] }>()
         {{ action.indexTo }}
 
         <button
-          class="bg-green-400 py-2 px-4 font-semibold rounded hover:bg-green-500 transition-colors duration-300"
+          class="time-travel-btn bg-green-400 py-2 px-4 font-semibold rounded hover:bg-green-500 transition-colors duration-300"
           @click="$emit('travel', index)"
         >
           Time travel
